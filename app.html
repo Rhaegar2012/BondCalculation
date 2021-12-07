@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A coding Project by Jose Tellez</title>
+    <title>Bond Calculator</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@
 <!--Nav Section-->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/default-monochrome-white-icon.svg" width="60" height="24" class="d-inline align-text-bottom"> APP NAME</a>
+        <a class="navbar-brand" href="#">Bond Calculator</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,19 +30,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link"  href="/index.html">Home</a>
+                    <a class="nav-link"  href="/index.html">Instructions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/app.html">The App</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/code.html">The Code</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="https://josetellezdev.netlify.app/">About</a>
+                    <a class="nav-link active" aria-current="page" href="/app.html">Calculator</a>
                 </li>
             </ul>
         </div>
@@ -51,28 +42,71 @@
 <!--Main Section-->
 <main class="flex-shrink-0">
     <div class="container">
-
+        <!--Number of terms input-->
+        <div class="row">
+            <!--First Input -->
+            <div class="col">
+                <form class="form">
+                    <div class="row">
+                        <div class="col">
+                            <label for="termInput" class="form-label">Number of Periods</label>
+                            <input type="number" id="termInput" class="form-control w-50">
+                            <button type="button" id="termButton" class="btn btn-dark my-2">Generate Cashflows</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="discountRateInput" class="form-label">Discount rate</label>
+                            <input type="number" id="discountRateInput" class="form-control w-50">
+                            <label for="faceValueInput" class="form-label">Face Value</label>
+                            <input type="number" id="faceValueInput" class="form-control w-50">
+                            <label for ="maturityInput" class="form-label">Time to Maturity</label>
+                            <input type="number" id="maturityInput" class="form-control w-50">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" id="faceValueButton"class="btn btn-dark my-2">Calculate Face Value</button>
+                            <button type="button" id="couponValueButton" class="btn btn-dark">Calculate Coupon Valuation</button>
+                          
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label>Coupon Validation Result:</label>
+                        <label id="couponValidationResult"></label>
+                        <label>Face Validation Result:</label>
+                        <label id="faceValueResult"></label>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <!--CashFlow containers-->
+                <div class="container">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Flow No</th>
+                                    <th>Amount($)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="flowTable">
+                                <!--Flows go here-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </main>
 <footer class="footer mt-auto py-3 bg-dark  sticky-footer">
     <div class="container-fluid">
         <div class="row row-cols-1 row-cols-lg-3 gy-2">
             <div class="col order-last order-lg-first text-light">
-                <div><span class="text-muted">&copy;2021</span>Jose Tellez │ jose.tellez.analytics@gmail.com</div>
-            </div>
-            <div class="col d-flex align-itmes-center justify-content-start justify-content-lg-center">
-                <img src="img/default-monochrome-white.svg" alt="Jose Tellez Logo" height="24">
+                <div><span class="text-muted">&copy;2021</span></div>
             </div>
             <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
-                <div class="row">
-                    <div class="col social">
-                        <a  target="_blank" href="https://www.linkedin.com/in/josetellezrendon/"><i class="fab fa-linkedin fa-2x"></i></a>
-                    </div>
-                    <div class="col social">
-                        <a target="_blank"  href="https://github.com/Rhaegar2012"><i class="fab fa-github fa-2x"></i></a>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -87,7 +121,11 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
 </script>
 <!--Link to javascript scripts-->
 <script src="js/site.js">
-
+</script>
+<script>
+    document.getElementById("termButton").addEventListener("click",generateCashFlows)
+    document.getElementById("faceValueButton").addEventListener("click",calculateFaceValuation)
+    document.getElementById("couponValueButton").addEventListener("click",calculateCouponBondValuation)
 </script>
 </body>
 </html>
