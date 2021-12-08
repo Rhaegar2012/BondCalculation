@@ -24,7 +24,7 @@ function calculateCouponBondValuation(){
        couponSum+=coupon;
    }
    couponValuation=couponSum/((1+discountRateInput)**(numberOfTerms));
-   document.getElementById("couponValidationResult").innerHTML=couponValuation;
+   document.getElementById("couponValidationResult").innerHTML=couponValuation.toFixed(2);
 
 }
 function calculateFaceValuation(){
@@ -32,6 +32,6 @@ function calculateFaceValuation(){
     let discountRateInput=parseFloat(document.getElementById("discountRateInput").value);
     let timeToMaturity=parseFloat(document.getElementById("maturityInput").value);
     let presentValue=faceValue/((1+discountRateInput)**timeToMaturity);
-    document.getElementById("faceValueResult").innerHTML=presentValue;
+    document.getElementById("faceValueResult").innerHTML=presentValue.toFixed(2);
 
 }
